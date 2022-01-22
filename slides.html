@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Creating personal websites using R Blogdown</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Aarathy Babu" />
+    <meta name="date" content="2022-01-22" />
+    <script src="slides_files/header-attrs/header-attrs.js"></script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+
+
+background-image: url("images/titleimage.png")
+background-size: cover
+
+
+
+---
+class: inverse center middle
+
+# Little bit about myself
+
+
+---
+
+## Before 
+
+.left-column[
+
+[**Education**](#3)
+
+[Telethon Kids Institute](#4)
+
+]
+
+.right-column[
+
+#### Undergraduate degree
+B.Tech in Electrical and Electronics Engineering&lt;br/&gt;
+Amrita School of Engineering &lt;br/&gt;
+Kerala,India
+
+
+#### Post graduate degree
+Master of Business Analytics&lt;br/&gt;
+Monash University &lt;br/&gt;
+Melbourne, Australia
+]
+
+---
+
+## After 
+
+
+.left-column[
+
+[Education](#3)
+
+[**Telethon Kids Institute**](#4)
+]
+
+.right-column[
+
+#### About Telethon Kids Institute
+The Telethon Kids Institute is based within the Perth Children’s Hospital, and is one of the largest, and most successful medical research institutes in Australia dedicated to improve the health and wellbeing of children.&lt;br/&gt;
+
+
+#### Infectious Disease Modeller
+
+Develop statistical and mathematical analyses of COVID-19 transmission in Australia.
+
+
+]
+
+
+---
+class: inverse center middle
+
+# Why should you create a personal website
+
+
+
+####  Helps you brush up your skills and acquire new ones 
+
+
+#### Makes your projects accessible 
+
+#### Helps polish your online presense
+
+#### Helps you land a job
+
+
+---
+class: center, middle
+
+## Making websites with blogdown + hugo
+
+ [Hugo](https://gohugo.io/) is a free,open-source static framework for building websites written with the Go programming language. &lt;br/&gt;
+ It supports Markdown &lt;br/&gt;
+Fast to build website&lt;br/&gt;
+Since it is open-source, there are quite variety of [community contributed themes](https://themes.gohugo.io/) you could choose from.&lt;br/&gt;
+[Academic](https://themes.gohugo.io/themes/starter-academic/) is one of the most popular Hugo themes.&lt;br/&gt;
+
+---
+
+## Academic 
+
+### Lets get started! 
+
+- Install blogdown R package and hugo in R if you haven't yet.
+- Create a [GitHub](https://github.com/) and a [Netlify](https://www.netlify.com/) account. [Sign up on Netlify](https://app.netlify.com/signup) via your GitHub account. 
+
+
+```r
+install.packages("blogdown")
+blogdown::install_hugo()
+```
+
+- In RStudio, click Project -&gt; New Project -&gt; New Directory -&gt; Website using blogdown.
+- Configure the directory name and path, and the hugo theme is **wowchemy/starter-academic**.
+---
+
+### Build and preview the website 
+
+
+```r
+blogdown::hugo_build(local=TRUE)
+blogdown::serve_site()
+```
+
+### Customisation
+
+
+- For sections you dont want, go to the folder **content/** -&gt; find the respective **.md** file and set :
+
+```r
+active: false
+```
+
+- For general website information, check config.yaml: 
+- Go to **config/_default/params.yaml** for website customization such as Contact section, appearance and so on.
+- Edit website title on **config/_default/config.yaml**
+- Use **config/_default/menus.yaml** for  menu customization
+- Use **content/authors/admin/_index.md** for customising personal information
+  + Change the profile picture by editing **content/authors/admin/avatar.jpg** picture
+- Change the website icon by editing **assets/media/icon.png** picture
+- Change Gallery section by editing **assets/media/album/themes/**
+
+---
+ 
+### How to make a blogpost 
+
+Addins &gt; New Post and fill out the details as needed.
+
+
+### Deploying your website
+
+- Set up GitHub repo on GitHub
+
+- link it with R Studio and push changes to the repo
+
+```r
+git init
+git add .
+git commit -m "first commit"
+git branch -M main
+git remote add origin url
+git push -u origin main
+```
+- Go to https://app.netlify.com/ and select "New site from Git".
+- Select your repo and deploy your site.
+    + Note : By default, the public folder in your project folder is deployed, therefore you must not change anything in public.
+    
+    
+---
+
+
+# Resources 
+
+[Wowchemy Documentation](https://wowchemy.com/docs/getting-started/hugo-github-quickstart/) &lt;br/&gt;
+[7 Ways You Can Further Customize the Hugo Academic Theme](https://isabella-b.com/blog/hugo-academic-customization/) &lt;br/&gt;
+[Host on Netlify](https://gohugo.io/hosting-and-deployment/hosting-on-netlify/) &lt;br/&gt;
+[How to use Git with R and RStudio](https://www.geo.uzh.ch/microsite/reproducible_research/post/rr-rstudio-git/) &lt;br/&gt;
+---
+
+class: center, middle
+
+# Thank you for your time!
+
+Slides created via the R packages:
+
+[**xaringan**](https://github.com/yihui/xaringan)&lt;br&gt;
+[gadenbuie/xaringanthemer](https://github.com/gadenbuie/xaringanthemer)
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "%current%",
+"highlightStyle": "github",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
